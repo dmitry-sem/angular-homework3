@@ -8,7 +8,7 @@ import {IWeather} from '../mock';
 })
 export class HotelWeatherComponent implements OnInit {
   @Input()
-  private hotelWeather: IWeather;
+  public hotelWeather: IWeather;
 
   constructor() { }
 

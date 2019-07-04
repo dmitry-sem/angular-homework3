@@ -8,7 +8,7 @@ import { HotelType, IHotel } from '../mock';
 })
 export class HotelListComponent implements OnInit {
   @Input()
-  private hotels: IHotel[];
+  public hotels: IHotel[];
 
   @Output()
   public hotelSelected: EventEmitter<IHotel> = new EventEmitter();
@@ -22,9 +22,9 @@ export class HotelListComponent implements OnInit {
     return this._selectedHotel;
   }
 
+  public selectedHotelType: HotelType;
+  public HotelType: typeof HotelType = HotelType;
   private _selectedHotel: IHotel;
-  private selectedHotelType: HotelType;
-  private HotelType: typeof HotelType = HotelType;
 
   constructor() { }
 

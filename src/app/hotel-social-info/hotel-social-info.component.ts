@@ -8,7 +8,7 @@ import {ISocialInfo} from '../mock';
 })
 export class HotelSocialInfoComponent implements OnInit {
   @Input()
-  private hotelSocialInfo: ISocialInfo;
+  public hotelSocialInfo: ISocialInfo;
 
   constructor() { }
 
