@@ -1,0 +1,15 @@
+<h1>Hotels</h1>
+<div class="element" *ngIf="hotels; else loadingEl">
+  <div class="element-left">
+    <app-hotel-list [hotels]="hotels" (hotelSelected)="hotelSelected($event)"></app-hotel-list>
+  </div>
+  <div class="element-right">
+    <app-hotel-weather [hotelWeather]="selectedHotel?.weather"></app-hotel-weather>
+    <app-hotel-social-info [hotelSocialInfo]="selectedHotel?.social_info"></app-hotel-social-info>
+  </div>
+  <div class="clear"> </div>
+</div>
+<ng-template #loadingEl>Loading...</ng-template>
+<div class="copy-right">
+  <p>© 2019</p>
+</div>
