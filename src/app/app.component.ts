@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { hotels$, IHotel } from './mock';
-import { Observable } from 'rxjs';
+import { HotelsService } from './hotels.service';
+import { IHotel } from './mock';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public hotels: IHotel[];
-  public selectedHotel: IHotel;
+  public isLoading = true;
 
-  private hotels$: Observable<IHotel[]> = hotels$;
+  constructor(private hotelsService: HotelsService) {}
 
   ngOnInit(): void {
-    this.hotels$.subscribe((hotels: IHotel[]) => {
-      this.hotels = hotels;
+    this.hotelsService.getHotels$(true).subscribe((hotels: IHotel[]) => {
+      this.isLoading = hotels.length === 0;
     });
-  }
-
-  public hotelSelected(hotel: IHotel): void {
-    this.selectedHotel = hotel;
   }
 }

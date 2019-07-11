@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HotelType, IHotel } from '../mock';
+import { HotelsService } from '../hotels.service';
 
 @Component({
   selector: 'app-hotel-list',
@@ -7,29 +8,22 @@ import { HotelType, IHotel } from '../mock';
   styleUrls: ['./hotel-list.component.css']
 })
 export class HotelListComponent implements OnInit {
-  @Input()
   public hotels: IHotel[];
-
-  @Output()
-  public hotelSelected: EventEmitter<IHotel> = new EventEmitter();
-
-  public set selectedHotel(selectedHotel: IHotel) {
-    this._selectedHotel = selectedHotel;
-    this.hotelSelected.emit(selectedHotel);
-  }
-
-  public get selectedHotel() {
-    return this._selectedHotel;
-  }
-
+  public selectedHotel: IHotel|null;
   public selectedHotelType: HotelType;
-  public HotelType: typeof HotelType = HotelType;
-  private _selectedHotel: IHotel;
 
-  constructor() { }
+  public HotelType: typeof HotelType = HotelType;
+
+  constructor(private hotelsService: HotelsService) { }
 
   ngOnInit() {
-    this.selectedHotel = this.hotels[0];
+    this.hotelsService.getHotels$(true).subscribe((hotels: IHotel[]) => {
+      this.hotels = hotels;
+    });
+
+    this.hotelsService.getSelectedHotel$().subscribe((hotel: IHotel|null) => {
+      this.selectedHotel = hotel;
+    });
   }
 
   selectHotelType($event: MouseEvent) {
@@ -44,6 +38,6 @@ export class HotelListComponent implements OnInit {
   }
 
   selectHotel(hotel: IHotel) {
-    this.selectedHotel = hotel;
+    this.hotelsService.setSelectedHotel(hotel);
   }
 }

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IWeather} from '../mock';
+import { Component, OnInit } from '@angular/core';
+import { IHotel, IWeather } from '../mock';
+import { HotelsService } from '../hotels.service';
 
 @Component({
   selector: 'app-hotel-weather',
@@ -7,12 +8,13 @@ import {IWeather} from '../mock';
   styleUrls: ['./hotel-weather.component.css']
 })
 export class HotelWeatherComponent implements OnInit {
-  @Input()
-  public hotelWeather: IWeather;
+  public hotelWeather: IWeather|null;
 
-  constructor() { }
+  constructor(private hotelsService: HotelsService) { }
 
   ngOnInit() {
+    this.hotelsService.getSelectedHotel$().subscribe((hotel: IHotel|null) => {
+      this.hotelWeather = hotel && hotel.weather;
+    });
   }
-
 }

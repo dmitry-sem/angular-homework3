@@ -1,6 +1,3 @@
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
-
 export interface IHotel {
   _id: number;
   type: HotelType;
@@ -34,7 +31,7 @@ export enum HotelType {
   FIVE_STAR = 'five'
 }
 
-const hotels: IHotel[] = [
+export const mockedHotels: IHotel[] = [
   {
     _id: 1,
     type: HotelType.TWO_STAR,
@@ -207,8 +204,3 @@ const hotels: IHotel[] = [
     }
   }
 ];
-
-
-export const hotels$: Observable<IHotel[]> = of(hotels).pipe(
-  delay(1500)
-);

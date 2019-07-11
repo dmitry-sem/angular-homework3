@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {HotelType, IHotel} from './mock';
+import { HotelType, IHotel } from './mock';
 
 @Pipe({
   name: 'hotelType'

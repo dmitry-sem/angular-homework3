@@ -1,4 +1,4 @@
-<div class="element-bg-img"><img [src]="selectedHotel.img" alt="" class="img-responsive"> </div>
+<div *ngIf="selectedHotel" class="element-bg-img"><img [src]="selectedHotel.img" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
   <div class="ele-strip">
     <ul (click)="selectHotelType($event)">
