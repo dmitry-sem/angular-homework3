@@ -1,12 +1,12 @@
-<div *ngIf="selectedHotel" class="element-bg-img"><img [src]="selectedHotel.img" alt="" class="img-responsive"> </div>
+<div *ngIf="selectedHotel$ | async as selectedHotel" class="element-bg-img"><img [src]="selectedHotel.img" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
   <div class="ele-strip">
-    <ul (click)="selectHotelType($event)">
-      <li><a [attr.data-id]="HotelType.ONE_STAR">One star</a></li>
-      <li><a [attr.data-id]="HotelType.TWO_STAR">Two stars</a></li>
-      <li><a [attr.data-id]="HotelType.THREE_STAR">Three stars</a></li>
-      <li><a [attr.data-id]="HotelType.FOUR_STAR">Four stars</a></li>
-      <li class="anc-bor"><a [attr.data-id]="HotelType.FIVE_STAR">Five stars</a></li>
+    <ul>
+      <li><a (click)="selectHotelType(HotelType.ONE_STAR)">One star</a></li>
+      <li><a (click)="selectHotelType(HotelType.TWO_STAR)">Two stars</a></li>
+      <li><a (click)="selectHotelType(HotelType.THREE_STAR)">Three stars</a></li>
+      <li><a (click)="selectHotelType(HotelType.FOUR_STAR)">Four stars</a></li>
+      <li class="anc-bor"><a (click)="selectHotelType(HotelType.FIVE_STAR)">Five stars</a></li>
     </ul>
   </div>
   <div class="village">
@@ -14,7 +14,7 @@
     <span class="line"> </span>
     <div class="activity_box">
       <div class="scrollbar" id="style-2">
-        <div class="activity-row" *ngFor="let hotel of hotels | hotelType:selectedHotelType" (click)="selectHotel(hotel)">
+        <div class="activity-row" *ngFor="let hotel of hotels$ | async | hotelType:selectedHotelType" (click)="selectHotel(hotel)">
           <div class="activity-desc">
             <h5>{{hotel.address}}</h5>
             <h6>{{hotel.phone | phone}}</h6>

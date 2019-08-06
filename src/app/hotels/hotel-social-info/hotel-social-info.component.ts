@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IHotel, ISocialInfo } from '../mock';
-import { HotelsService } from '../hotels.service';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../store';
+import { IHotel, ISocialInfo } from '../../store/reducers/hotels.reducer';
 
 @Component({
   selector: 'app-hotel-social-info',
@@ -10,10 +11,10 @@ import { HotelsService } from '../hotels.service';
 export class HotelSocialInfoComponent implements OnInit {
   public hotelSocialInfo: ISocialInfo|null;
 
-  constructor(private hotelsService: HotelsService) { }
+  constructor(private store: Store<IStore>) { }
 
   ngOnInit() {
-    this.hotelsService.getSelectedHotel$().subscribe((hotel: IHotel|null) => {
+    this.store.select('selectedHotel').subscribe((hotel: IHotel|null) => {
       this.hotelSocialInfo = hotel && hotel.social_info;
     });
   }

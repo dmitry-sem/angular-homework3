@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IHotel, IWeather } from '../mock';
-import { HotelsService } from '../hotels.service';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../store';
+import { IHotel, IWeather } from '../../store/reducers/hotels.reducer';
 
 @Component({
   selector: 'app-hotel-weather',
@@ -10,10 +11,10 @@ import { HotelsService } from '../hotels.service';
 export class HotelWeatherComponent implements OnInit {
   public hotelWeather: IWeather|null;
 
-  constructor(private hotelsService: HotelsService) { }
+  constructor(private store: Store<IStore>) { }
 
   ngOnInit() {
-    this.hotelsService.getSelectedHotel$().subscribe((hotel: IHotel|null) => {
+    this.store.select('selectedHotel').subscribe((hotel: IHotel|null) => {
       this.hotelWeather = hotel && hotel.weather;
     });
   }

@@ -1,41 +1,10 @@
-export interface IHotel {
-  _id: number;
-  type: HotelType;
-
-  img: string;
-  address: string;
-  phone: number;
-  weather: IWeather;
-  social_info: ISocialInfo;
-}
-
-export interface IWeather {
-  title: string;
-  icon: string;
-  water: number;
-  temperature: number;
-}
-
-export interface ISocialInfo {
-  title: string;
-  img: string;
-  followers: number;
-  following: number;
-}
-
-export enum HotelType {
-  ONE_STAR = 'one',
-  TWO_STAR = 'two',
-  THREE_STAR = 'three',
-  FOUR_STAR = 'four',
-  FIVE_STAR = 'five'
-}
+import { HotelType, IHotel } from './store/reducers/hotels.reducer';
 
 export const mockedHotels: IHotel[] = [
   {
     _id: 1,
     type: HotelType.TWO_STAR,
-    img: 'src/assets/img/1/1.jpg',
+    img: 'assets/img/1/1.jpg',
     phone: 1111111111,
     address: 'Address 1',
     weather: {
@@ -46,7 +15,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 1',
-      img: 'src/assets/img/1/2.jpg',
+      img: 'assets/img/1/2.jpg',
       followers: 1,
       following: 1
     }
@@ -54,7 +23,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 2,
     type: HotelType.TWO_STAR,
-    img: 'src/assets/img/2/1.jpg',
+    img: 'assets/img/2/1.jpg',
     phone: 2222222222,
     address: 'Address 2',
     weather: {
@@ -65,7 +34,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 2',
-      img: 'src/assets/img/2/2.jpg',
+      img: 'assets/img/2/2.jpg',
       followers: 2,
       following: 2
     }
@@ -73,7 +42,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 3,
     type: HotelType.THREE_STAR,
-    img: 'src/assets/img/3/1.jpg',
+    img: 'assets/img/3/1.jpg',
     phone: 3333333333,
     address: 'Address 3',
     weather: {
@@ -84,7 +53,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 3',
-      img: 'src/assets/img/3/2.jpg',
+      img: 'assets/img/3/2.jpg',
       followers: 3,
       following: 3
     }
@@ -92,7 +61,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 4,
     type: HotelType.FOUR_STAR,
-    img: 'src/assets/img/4/1.jpg',
+    img: 'assets/img/4/1.jpg',
     phone: 4444444444,
     address: 'Address 4',
     weather: {
@@ -103,7 +72,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 4',
-      img: 'src/assets/img/4/2.jpg',
+      img: 'assets/img/4/2.jpg',
       followers: 4,
       following: 4
     }
@@ -111,7 +80,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 5,
     type: HotelType.FIVE_STAR,
-    img: 'src/assets/img/5/1.jpg',
+    img: 'assets/img/5/1.jpg',
     phone: 55555555555,
     address: 'Address 5',
     weather: {
@@ -122,7 +91,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 5',
-      img: 'src/assets/img/5/2.jpg',
+      img: 'assets/img/5/2.jpg',
       followers: 5,
       following: 5
     }
@@ -130,7 +99,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 6,
     type: HotelType.THREE_STAR,
-    img: 'src/assets/img/6/1.jpg',
+    img: 'assets/img/6/1.jpg',
     phone: 66666666666,
     address: 'Address 6',
     weather: {
@@ -141,7 +110,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 6',
-      img: 'src/assets/img/6/2.jpg',
+      img: 'assets/img/6/2.jpg',
       followers: 6,
       following: 6
     }
@@ -149,7 +118,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 7,
     type: HotelType.ONE_STAR,
-    img: 'src/assets/img/7/1.jpg',
+    img: 'assets/img/7/1.jpg',
     phone: 777777777,
     address: 'Address 7',
     weather: {
@@ -160,7 +129,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 7',
-      img: 'src/assets/img/7/2.jpg',
+      img: 'assets/img/7/2.jpg',
       followers: 7,
       following: 7
     }
@@ -168,7 +137,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 8,
     type: HotelType.THREE_STAR,
-    img: 'src/assets/img/8/1.jpg',
+    img: 'assets/img/8/1.jpg',
     phone: 88888888,
     address: 'Address 8',
     weather: {
@@ -179,7 +148,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 8',
-      img: 'src/assets/img/8/2.jpg',
+      img: 'assets/img/8/2.jpg',
       followers: 8,
       following: 8
     }
@@ -187,7 +156,7 @@ export const mockedHotels: IHotel[] = [
   {
     _id: 9,
     type: HotelType.THREE_STAR,
-    img: 'src/assets/img/9/1.jpg',
+    img: 'assets/img/9/1.jpg',
     phone: 99999999999,
     address: 'Address 9',
     weather: {
@@ -198,7 +167,7 @@ export const mockedHotels: IHotel[] = [
     },
     social_info: {
       title: 'Social info 9',
-      img: 'src/assets/img/9/2.jpg',
+      img: 'assets/img/9/2.jpg',
       followers: 9,
       following: 9
     }

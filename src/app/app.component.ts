@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HotelsService } from './hotels.service';
-import { IHotel } from './mock';
+import { IHotel } from './store/reducers/hotels.reducer';
+import { GetAllHotelsPending } from './store/actions/hotels.action';
+import { Store } from '@ngrx/store';
+import { IStore } from './store';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,12 @@ import { IHotel } from './mock';
 export class AppComponent implements OnInit {
   public isLoading = true;
 
-  constructor(private hotelsService: HotelsService) {}
+  constructor(private store: Store<IStore>) {}
 
-  ngOnInit(): void {
-    this.hotelsService.getHotels$(true).subscribe((hotels: IHotel[]) => {
+  ngOnInit() {
+    this.store.dispatch(new GetAllHotelsPending());
+
+    this.store.select('hotels').subscribe((hotels: IHotel[]) => {
       this.isLoading = hotels.length === 0;
     });
   }
